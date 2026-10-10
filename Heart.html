@@ -1,0 +1,134 @@
+
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Egy kis meglepetés ❤️</title>
+
+<style>
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    overflow: hidden;
+    background: radial-gradient(circle, #351020, #10000a 75%);
+    color: white;
+    font-family: Arial, sans-serif;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.content {
+    position: relative;
+    z-index: 2;
+    padding: 20px;
+}
+
+.heart {
+    font-size: 120px;
+    animation: beat 1s infinite;
+    filter: drop-shadow(0 0 25px #ff1744);
+}
+
+h1 {
+    color: #ff6688;
+    font-size: 32px;
+}
+
+p {
+    font-size: 18px;
+    line-height: 1.7;
+}
+
+@keyframes beat {
+    0%, 100% { transform: scale(1); }
+    15% { transform: scale(1.2); }
+    30% { transform: scale(1); }
+    45% { transform: scale(1.12); }
+}
+
+.floating-heart {
+    position: absolute;
+    bottom: -40px;
+    animation: floatUp linear infinite;
+    opacity: 0.75;
+    pointer-events: none;
+}
+
+@keyframes floatUp {
+    from {
+        transform: translateY(0) rotate(0deg);
+        opacity: 0;
+    }
+    15% { opacity: 0.8; }
+    to {
+        transform: translateY(-110vh) rotate(360deg);
+        opacity: 0;
+    }
+}
+
+button {
+    margin-top: 20px;
+    padding: 12px 24px;
+    border: none;
+    border-radius: 25px;
+    background: #ff3864;
+    color: white;
+    font-size: 17px;
+    cursor: pointer;
+}
+
+button:hover {
+    background: #ff6688;
+}
+</style>
+</head>
+
+<body>
+
+<div class="content">
+    <div class="heart">❤️</div>
+
+    <h1>Neked készítettem ❤️</h1>
+
+    <p>
+        Szerettem volna valami különlegeset készíteni neked.<br>
+        Ez a kis szív csak egy apró emlékeztető arra,<br>
+        hogy milyen sokat jelentesz nekem. 💗
+    </p>
+
+    <button onclick="showMessage()">
+        Kattints rám 💌
+    </button>
+
+    <p id="message"></p>
+</div>
+
+<script>
+function showMessage() {
+    document.getElementById("message").innerHTML =
+        "Te teszed szebbé a napjaimat. ❤️✨";
+}
+
+for (let i = 0; i < 25; i++) {
+    const heart = document.createElement("div");
+    heart.className = "floating-heart";
+    heart.textContent = Math.random() > 0.5 ? "💗" : "💕";
+
+    heart.style.left = Math.random() * 100 + "vw";
+    heart.style.fontSize = (12 + Math.random() * 20) + "px";
+    heart.style.animationDuration = (5 + Math.random() * 8) + "s";
+    heart.style.animationDelay = (-Math.random() * 12) + "s";
+
+    document.body.appendChild(heart);
+}
+</script>
+
+</body>
+</html>
